@@ -98,8 +98,8 @@ const App = () => {
         </div>
       )}
 
-      <div className="flex justify-center items-start min-h-[600px]  ">
-        <div className="w-full md:w-1/2 mb-4 md:mb-0 border-2 border-red-300 min-h-[600px] ">
+      <div className="flex flex-wrap md:flex-nowrap justify-center items-start min-h-[300px] md:min-h-[600px]">
+        <div className="w-full md:w-1/2 mb-4 md:mb-0 border-2 border-red-300 min-h-[300px] md:min-h-[600px] ">
           {image && (
             <div>
               <img src={image} alt="Preview" className="max-w-full max-h-[550px] object-contain" />

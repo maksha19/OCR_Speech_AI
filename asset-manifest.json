@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/speach/static/css/main.9c66f588.css",
-    "main.js": "/speach/static/js/main.111f35d1.js",
-    "static/js/787.6f215984.chunk.js": "/speach/static/js/787.6f215984.chunk.js",
-    "index.html": "/speach/index.html",
-    "main.9c66f588.css.map": "/speach/static/css/main.9c66f588.css.map",
-    "main.111f35d1.js.map": "/speach/static/js/main.111f35d1.js.map",
-    "787.6f215984.chunk.js.map": "/speach/static/js/787.6f215984.chunk.js.map"
+    "main.css": "/OCR_Speech_AI/static/css/main.9c66f588.css",
+    "main.js": "/OCR_Speech_AI/static/js/main.1c972848.js",
+    "static/js/787.6f215984.chunk.js": "/OCR_Speech_AI/static/js/787.6f215984.chunk.js",
+    "index.html": "/OCR_Speech_AI/index.html",
+    "main.9c66f588.css.map": "/OCR_Speech_AI/static/css/main.9c66f588.css.map",
+    "main.1c972848.js.map": "/OCR_Speech_AI/static/js/main.1c972848.js.map",
+    "787.6f215984.chunk.js.map": "/OCR_Speech_AI/static/js/787.6f215984.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9c66f588.css",
-    "static/js/main.111f35d1.js"
+    "static/js/main.1c972848.js"
   ]
 }

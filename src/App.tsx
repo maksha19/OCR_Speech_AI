@@ -13,9 +13,12 @@ const App = () => {
   const textareaRef = useRef<any>(null);
   const [textSelection, setTextSelection] = useState<{start:string,end:string} | null>(null);
   const [isStartMic, setIsStartMic] = useState<boolean | null>(null);
+  const [isFileChange, setIsFileChange] = useState<boolean | null>(null);
 
   const handleImageUpload = async (event: any) => {
     const file = event.target.files[0];
+    if(!file) return;
+    setIsFileChange(null)
     setImage(URL.createObjectURL(file));
     setProgress(0)
     Tesseract.recognize(
@@ -31,7 +34,15 @@ const App = () => {
       }
     ).then(({ data }) => {
       console.log(data);
+      const lines = data.lines
+      let text = ""
+      for (let line of lines) {
+        if(line.confidence > 30){
+          text = text + line.text.trim() + "\n"
+        }
+      }
       setPreviewText(data.text);
+      setIsFileChange(true)
     });
   }
 
@@ -49,7 +60,13 @@ const App = () => {
       const endPointer = Number(end)
       const updateText =  previewText.slice(0, Math.abs(startPointer)) + voiceText + previewText.slice(Math.abs(endPointer))
       setPreviewText(updateText)
-      setTextSelection(null)
+      if (textareaRef.current) {
+        const endAt = previewText.slice(0, Math.abs(startPointer)).length + voiceText.length
+        setTimeout(()=>{
+          textareaRef.current.selectionEnd = endAt;
+          setTextSelection(null)
+        },0)
+      }
     }
   }
 
@@ -107,7 +124,7 @@ const App = () => {
           )}
         </div>
         <div className="w-full md:w-1/2 h-full m-2">
-        <SpeechRecognition updateScript={updateScript} isStartMic={isStartMic} updateMicStatus={updateMicStatus} />
+        <SpeechRecognition updateScript={updateScript} isStartMic={isStartMic} updateMicStatus={updateMicStatus} isFileChange={isFileChange} />
           <div>
             <h2 className="text-xl font-semibold mb-2">Detected Text:</h2>
             <div className='className="w-full p-2 border border-red-300"'>

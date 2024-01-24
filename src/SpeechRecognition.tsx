@@ -4,10 +4,11 @@ import React, { useState, useEffect } from 'react';
 interface SpeechRecognition{
   updateScript: (voiceText:string) => void;
   isStartMic: boolean | null ;
+  isFileChange : boolean | null ;
   updateMicStatus : () => void
 }
 
-const SpeechRecognition: React.FC<SpeechRecognition> = ({updateScript,isStartMic,updateMicStatus}) => {
+const SpeechRecognition: React.FC<SpeechRecognition> = ({updateScript,isStartMic, isFileChange,updateMicStatus}) => {
   const [recognition, setRecognition] = useState<any>(
     null
   );
@@ -15,8 +16,10 @@ const SpeechRecognition: React.FC<SpeechRecognition> = ({updateScript,isStartMic
   const [transcription, setTranscription] = useState<string>('');
 
   useEffect(() => {
-    console.log('Speech',transcription)
-    updateScript(transcription)
+    if(transcription !== ''){
+      console.log('Speech',transcription)
+      updateScript(transcription)
+    }
   },
   [transcription])
 
@@ -25,6 +28,13 @@ const SpeechRecognition: React.FC<SpeechRecognition> = ({updateScript,isStartMic
       startListening()
     }
   },[isStartMic])
+
+  useEffect(()=>{
+    if(isFileChange){
+      console.log('isFileChange',isFileChange)
+      setTranscription('')
+    }
+  },[isFileChange])
 
   useEffect(() => {
     const SpeechRecognition =

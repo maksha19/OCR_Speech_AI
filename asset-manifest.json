@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/OCR_Speech_AI/static/css/main.18d9a065.css",
-    "main.js": "/OCR_Speech_AI/static/js/main.c688fb09.js",
+    "main.js": "/OCR_Speech_AI/static/js/main.5ca04c8c.js",
     "static/js/787.6f215984.chunk.js": "/OCR_Speech_AI/static/js/787.6f215984.chunk.js",
     "index.html": "/OCR_Speech_AI/index.html",
     "main.18d9a065.css.map": "/OCR_Speech_AI/static/css/main.18d9a065.css.map",
-    "main.c688fb09.js.map": "/OCR_Speech_AI/static/js/main.c688fb09.js.map",
+    "main.5ca04c8c.js.map": "/OCR_Speech_AI/static/js/main.5ca04c8c.js.map",
     "787.6f215984.chunk.js.map": "/OCR_Speech_AI/static/js/787.6f215984.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.18d9a065.css",
-    "static/js/main.c688fb09.js"
+    "static/js/main.5ca04c8c.js"
   ]
 }

@@ -2,6 +2,7 @@
 import React, { useState, useRef } from 'react';
 import SpeechRecognition from './SpeechRecognition';
 import Tesseract from 'tesseract.js'
+import { ReactComponent as ImageSVG } from './photo-svgrepo-com.svg'
 
 
 import './App.css';
@@ -11,7 +12,7 @@ const App = () => {
   const [previewText, setPreviewText] = useState('');
   const [progress, setProgress] = useState(0);
   const textareaRef = useRef<any>(null);
-  const [textSelection, setTextSelection] = useState<{start:string,end:string} | null>(null);
+  const [textSelection, setTextSelection] = useState<{ start: string, end: string } | null>(null);
   const [isStartMic, setIsStartMic] = useState<boolean | null>(null);
   const [isFileChange, setIsFileChange] = useState<boolean | null>(null);
 
@@ -37,7 +38,7 @@ const App = () => {
       const lines = data.lines
       let text = ""
       for (let line of lines) {
-        if(line.confidence > 30){
+        if (line.confidence > 30) {
           text = text + line.text.trim() + "\n"
         }
       }
@@ -52,28 +53,28 @@ const App = () => {
     setPreviewText('');
   };
 
-  const updateScript = (voiceText:string) => {
-    console.log('updateScript',voiceText);
-    if(textSelection){
-      const {start, end} = textSelection
+  const updateScript = (voiceText: string) => {
+    console.log('updateScript', voiceText);
+    if (textSelection) {
+      const { start, end } = textSelection
       const startPointer = Number(start)
       const endPointer = Number(end)
-      const updateText =  previewText.slice(0, Math.abs(startPointer)) + voiceText + previewText.slice(Math.abs(endPointer))
+      const updateText = previewText.slice(0, Math.abs(startPointer)) + voiceText + previewText.slice(Math.abs(endPointer))
       setPreviewText(updateText)
       if (textareaRef.current) {
         const endAt = previewText.slice(0, Math.abs(startPointer)).length + voiceText.length
-        setTimeout(()=>{
+        setTimeout(() => {
           textareaRef.current.selectionEnd = endAt;
           setTextSelection(null)
-        },0)
+        }, 0)
       }
     }
   }
 
-  const selectTextSelection= (event:any) =>{
+  const selectTextSelection = (event: any) => {
     setTextSelection({
-      start:event.target.selectionStart,
-      end:event.target.selectionEnd
+      start: event.target.selectionStart,
+      end: event.target.selectionEnd
     })
     const selection = event.target.value.substring(
       event.target.selectionStart,
@@ -82,14 +83,14 @@ const App = () => {
     console.log(selection)
     setIsStartMic(true)
   }
-  const updateMicStatus  = () =>{
+  const updateMicStatus = () => {
     setIsStartMic(null)
   }
   const getCursorPosition = () => {
     if (textareaRef.current) {
       setTextSelection({
-        start:textareaRef.current.selectionStart,
-        end:textareaRef.current.selectionEnd
+        start: textareaRef.current.selectionStart,
+        end: textareaRef.current.selectionEnd
       })
     }
     return -1; // Return -1 if textareaRef is not available
@@ -116,15 +117,18 @@ const App = () => {
       )}
 
       <div className="flex flex-wrap md:flex-nowrap justify-center items-start min-h-[300px] md:min-h-[600px]">
-        <div className="w-full md:w-1/2 mb-4 md:mb-0 border-2 border-red-300 min-h-[300px] md:min-h-[600px] ">
-          {image && (
-            <div>
+        <div className="relative w-full md:w-1/2 mb-4 md:mb-0 border-2 border-dashed border-orange-400 min-h-[300px] md:min-h-[600px] flex flex-col items-center justify-center">          {image ? (
+            <div className='m-2'>
               <img src={image} alt="Preview" className="max-w-full max-h-[550px] object-contain" />
+            </div>
+          ) : (
+            <div className='mb-4'>
+              <ImageSVG />
             </div>
           )}
         </div>
         <div className="w-full md:w-1/2 h-full m-2">
-        <SpeechRecognition updateScript={updateScript} isStartMic={isStartMic} updateMicStatus={updateMicStatus} isFileChange={isFileChange} />
+          <SpeechRecognition updateScript={updateScript} isStartMic={isStartMic} updateMicStatus={updateMicStatus} isFileChange={isFileChange} />
           <div>
             <h2 className="text-xl font-semibold mb-2">Detected Text:</h2>
             <div className='className="w-full p-2 border border-red-300"'>
@@ -134,9 +138,9 @@ const App = () => {
                 rows={16}
                 className="w-full p-2 border border-gray-300"
                 onChange={(e) => setPreviewText(e.target.value)}
-                onSelect={(e) => e.target.addEventListener("select",selectTextSelection)}
-                onKeyDown={e=> getCursorPosition()}
-                onClick={e=> getCursorPosition()}
+                onSelect={(e) => e.target.addEventListener("select", selectTextSelection)}
+                onKeyDown={e => getCursorPosition()}
+                onClick={e => getCursorPosition()}
               />
             </div>
           </div>

@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/OCR_Speech_AI/static/css/main.d30d3c7d.css",
-    "main.js": "/OCR_Speech_AI/static/js/main.31a0313d.js",
+    "main.js": "/OCR_Speech_AI/static/js/main.cb5920a1.js",
     "static/js/787.6f215984.chunk.js": "/OCR_Speech_AI/static/js/787.6f215984.chunk.js",
     "static/media/photo-svgrepo-com.svg": "/OCR_Speech_AI/static/media/photo-svgrepo-com.d0f7cd82da28c2a4b76cd8ad1fd8afbc.svg",
     "index.html": "/OCR_Speech_AI/index.html",
     "main.d30d3c7d.css.map": "/OCR_Speech_AI/static/css/main.d30d3c7d.css.map",
-    "main.31a0313d.js.map": "/OCR_Speech_AI/static/js/main.31a0313d.js.map",
+    "main.cb5920a1.js.map": "/OCR_Speech_AI/static/js/main.cb5920a1.js.map",
     "787.6f215984.chunk.js.map": "/OCR_Speech_AI/static/js/787.6f215984.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d30d3c7d.css",
-    "static/js/main.31a0313d.js"
+    "static/js/main.cb5920a1.js"
   ]
 }
